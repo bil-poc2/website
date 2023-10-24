@@ -3,8 +3,9 @@ project:
   output-dir: docs
   
 website:
-  title: "BIL POC2 Fueling Adaptations"
+  title: "BIL POC2 Fueling Adaptation"
   navbar:
+    logo: /img/logo_bw.png
     left:
       - href: index.qmd
         text: Home
