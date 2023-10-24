@@ -1,0 +1,8 @@
+---
+title: "Map"
+---
+
+```{=html}
+<iframe src="misc/gis_basemap.html" style="width:100%; height:500px"></iframe>
+```
+

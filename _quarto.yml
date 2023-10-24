@@ -3,24 +3,27 @@ project:
   output-dir: docs
   
 website:
-  title: "BIL POC2 Webiste"
+  title: "BIL POC2 Fueling Adaptations"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - projects.qmd
-    tools:
-      - icon: twitter
-        href: https://twitter.com/
-      - icon: github
-        href: https://github.com/YOURUSERNAME/YOURREPO
+      - href: about.qmd
+        text: About 
+      - href: team.qmd
+        text: Team 
+    right:
+      - text: More
+        menu: 
+        - notebooks.qmd
+        - map.qmd
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
-    left: "&copy; Copyright 2023, Cody Evers"
+    left: "&copy; Copyright 2023"
 
 format:
   html:
-    theme: cerulean
+    theme: united
     toc: true
 
 editor: source
