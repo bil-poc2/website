@@ -25,6 +25,9 @@ format:
   html:
     theme: united
     toc: true
+    grid:
+      body-width: 500px
+      margin-width: 350px
 
 editor: source
 

@@ -1,29 +1,25 @@
 ---
-title: "BIL POC2 - Fueling Adaptations"
-about:
-  id: me
-  template: broadside
-  image: img/iso.png
+title: "Fueling Adaptations"
 ---
 
-**Background.** Wildfires across the United States have resulted in rising ecological and social costs. More and more homes and communities are threatened by wildfire because of a legacy of fire exclusion on the landscape, changing climate and fuel conditions, and an expanding wildland-urban interface. The USDA Forest Service now has a 10-year Wildfire Crisis Strategy (WCS), which lays out a sweeping vision for an unprecedented investment in forest health and risk mitigation for communities, such as using fuel treatments to reduce wildfire risk. Rather than a one-time effort, these investments are intended as a "down payment" on a long-term commitment to proactively manage for wildfire risk reduction, in collaboration with diverse partners in local communities. It is critical that these federal investments effectively combine with and make the most of the capacities and networks that already exist, to effectively fuel adaptation to changing wildfire dynamics.
+Fueling Adaptation looks at how federal investments leverage local capacity towards a wildfire-adapted landscape where low/mixed severity fire maintains healthy ecosystems and communities coexist with fire though smart planning, defensible space, and safe building materials. To be effective, it is critical that these federal investments effectively combine with and make the most of the capacities and networks that already exist, to effectively fuel adaptation to changing wildfire dynamics.
 
-**Project Goal and Research Questions.** With funding from the Bipartisan Infrastructure Law, we are conducting research in 2023-2025 to examine ongoing wildfire adaptation on key landscapes identified as priorities under the WCS.
+![**An Emerging Crisis.** Wildfires across the United States have resulted in rising ecological and social costs. More and more homes and communities are threatened by wildfire because of a legacy of fire exclusion on the landscape, changing climate and fuel conditions, and an expanding wildland-urban interface.](img/iso.png){.column-margin}
 
--   Who are the key actors involved in wildfire governance, and where are the existing capacities and gaps in governance networks?
+With funding from the Bipartisan Infrastructure Law, we are conducting research in 2023-2025 to examine ongoing wildfire adaptation on key landscapes identified as priorities under the WCS. Our work seeks to answer the following overarching question:
 
--   What are the communication networks by which information about wildfire adaptation and mitigation practices move between actors?
+- How can WCS investments enhance local capacity and what conditions make these investments effective at catalyzing collaborative efforts to reduce wildfire risk?
 
--   What types of community adaptation efforts have been implemented to address wildfire, and where do gaps remain?
+More specifically we ask:
 
--   How can WCS investments enhance local capacity? Under what conditions are these investments most effective at catalyzing collaborative efforts to reduce wildfire risk?
+-   Who is involved in wildfire governance and where  are there existing capacities and gap?
 
-**Where we work.** This project will include fine-grained analysis of four focal landscapes in Washington, Oregon, Idaho, and Colorado, as well as a broader analysis of six additional landscapes identified in the WCS.
+-   How is information about wildfire adaptation and mitigation practices shared?
 
-![](img/map.jpg)
+-   What community efforts to address wildfire risk have been implemented and where do gaps remain?
 
-**Project Benefits.** This project integrates diverse forms of social and ecological data that encompass information about landscape conditions, actors involved in environmental governance, existing communications networks, and ongoing management actions aimed at mitigating wildfire impacts. Through this integration, we expect to gain unprecedented insight into where and why successful wildfire adaptation is occurring, and how to catalyze and fuel adaptation. This understanding of wildfire risk reduction will increase the effectiveness of the Forest Service's future investments, informing best practices for partnership-building, effective communication, and collaborative stewardship at the landscape scale.
+To answer these questions, this project integrates diverse forms of social and ecological data that encompass information about landscape conditions, actors involved in environmental governance, existing communications networks, and ongoing management actions aimed at mitigating wildfire impacts. 
 
-![](img/rxfire.jpeg)
+![**Adapting to Fire.** Innovative toos like prescribed fire had reduce risk to communities and restore fire-adapted forests.](img/rxfire.jpeg){.column-margin}
 
-**Additional project partners:** USDA Forest Service (Northern and Rocky Mountain Research Stations), Community Wildfire Planning Center, Portland State University, University of Colorado-Denver, FilterLabs.AI
+Through this integration, we expect to gain unprecedented insight into where and why successful wildfire adaptation is occurring, and how to catalyze and fuel adaptation. This understanding of wildfire risk reduction will increase the effectiveness of the Forest Service's future investments, informing best practices for partnership-building, effective communication, and collaborative stewardship at the landscape scale.

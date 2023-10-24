@@ -49,3 +49,6 @@ title: "About our Team"
 -   Erika Svendsen\
     USDA Forest Service\
     erika.svendsen\@pdx.edu
+
+
+**Additional project partners:** USDA Forest Service (Northern and Rocky Mountain Research Stations), Community Wildfire Planning Center, Portland State University, University of Colorado-Denver, FilterLabs.AI
