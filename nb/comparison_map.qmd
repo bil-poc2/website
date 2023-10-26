@@ -1,0 +1,110 @@
+---
+title: "Capacity vs Need Mockup"
+date: Oct 23, 2023
+author: Cody Evers
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+## Purpose
+
+This info on this page is meant as a mock-up for products that might be produced during the synthesis phase of POC2 Fueling Adaptation. First, we would use the fireshed registry project areas (i.e., what FMI is using) as spatial containers for aggregating data. For example, we could count the number of work locations within each project area that were collected during the governance survey. This could be combined with other measures, such as number of organizations, etc., to create a spatial map of capacity. This capacity information could then be contrasted against various risk and/or priority measures being developed by FMI or the Landscape Risk Dynamics group.
+
+```{r setup}
+# install.packages('pacman')
+pacman::p_load(leaflet, leaflet.esri, sf, dplyr, ambient, terra, here, ggplot2)
+
+# load gis data: pl = priority landscape, fs_pl = firesheds intersecting priority landscape, pa_pl = project areas intersecting priority landscape
+load('gis_data.Rdata')
+```
+
+# Southwest Idaho
+
+Southwest Idaho WCS landscape covers 2,679 square miles. The Payette and Boise national forests manage the majority of the WCS landscape. The map below shows the WCS landscape boundary in blue, intersecting/adjacent firesheds in red, and intersecting/adjacent project areas in black.
+
+```{r}
+leaflet(width = "100%", height = "100vh") |>
+  addProviderTiles(provider = 'Esri.WorldTopoMap') |>
+  addPolygons(data = pl, fillOpacity = 0, color = 'blue', weight = 6, opacity = .5) |>
+  addPolygons(data = fs_pl, fillOpacity = 0, color = 'red', weight = 2, opacity = .5) |>
+  addPolygons(data = pa_pl, fillOpacity = 0, color = 'black', weight = .2, opacity = 1)
+```
+
+# Build capacity surface
+
+Create random surface to represent capacity. These data will eventually be derived from survey data.
+
+```{r load}
+nr <- rast(pl |> st_transform(5070), res=1000)
+set.seed(1234)
+simplex <- noise_simplex(dim = dim(nr), pertubation = 'normal', frequency = 0.01)
+values(nr) <- rast(simplex) |> values()
+pa_pl$Capacity <- zonal(nr, vect(pa_pl |> st_transform(5070)), na.rm=T, exact=T) |> pull(1)
+```
+
+# Spatial distribution
+
+Map the spatial distribution of capacity and exposure. Notice the difference in values between the two metrics. Exposure various between 0 and 10. Capacity is some standardized value centered on 0.
+
+```{r maps}
+#| layout-ncol: 2
+
+plot(pa_pl[,'AnnualExposure'])
+plot(pa_pl[,'Capacity'])
+```
+
+## Interactive map
+
+These data could be combined within an interactive map, such as the on below where you can zoom, pan, and turn different layers on and off.
+
+```{r leaflet}
+pal_exp <- leaflet::colorNumeric('Reds', n = 4, domain = pa_pl$AnnualExposure)
+pal_cap <- leaflet::colorQuantile('Blues', n = 4, domain = pa_pl$Capacity)
+
+leaflet(width = "100%", height = "100vh") |>
+  addProviderTiles(provider = 'Esri.WorldTopoMap') |>
+  addMapPane('top', zIndex = 9999) |>
+  addPolygons(data = pa_pl, color = ~pal_exp(AnnualExposure), weight = 1, group = 'Exposure', fillOpacity = 0.5) |>
+  addPolygons(data = pa_pl, color = ~pal_cap(Capacity), weight = 1, group = 'Capacity', fillOpacity = 0.5) |>
+  addPolygons(data = pl, fillOpacity = 0, weight = 5, options = pathOptions(pane = "top"), group='WCS landscape') |>
+  addLayersControl(baseGroups = c("Exposure", "Capacity"), overlayGroups = 'WCS landscape')
+```
+
+## Comparison graph
+
+Taking this one step further, we find that capacity and exposure are weakly correlated. I.e., areas with higher exposure tend to have higher capacity. Nonetheless, there are some areas on the landscape where capacity is high and exposure low (or visa-versa). To tease this apart further, we classify project areas into bins based on whether they are above or below the median value for each index.
+
+```{r}
+cap_md <- median(pa_pl$Capacity)
+exp_md <- median(pa_pl$AnnualExposure)
+
+pa_pl2 <- pa_pl |> 
+  mutate(cap_grp = ifelse(Capacity > cap_md, 1, 0)) |>
+  mutate(exp_grp = ifelse(AnnualExposure > exp_md, 10, 0)) |>
+  mutate(group = factor(cap_grp + exp_grp, c(0,1,10,11), c('E0C0','E0C1','E1C0','E1C1')))
+
+ggplot(pa_pl2, aes(x=AnnualExposure, y=Capacity, color = group)) + 
+  geom_point() + 
+  # scale_x_sqrt() + 
+  geom_hline(yintercept = cap_md, linetype=2) +
+  geom_vline(xintercept = exp_md, linetype=2) +
+  labs(x = 'Exposure', y = 'Capacity', title = 'Need vs capacity', 
+       subtitle = 'Median values shown as dashed lines')
+```
+
+Visualizing this again as a map, we see some broad spatial patterns that might help coordinate future investments. Group E1C1 has high capacity and high exposure is are high priority, shovel-ready projects. Groups E1C0 has high exposure but low capacity and therefore may need more engagement, planning, and capacity building before high exposure can be addressed. Group E0C1 has high capacity but low exposure. These are areas that may require bundling exposure with other priorities (e.g., restoration, critical habitat, water supply) in order to make them viable projects from the perspective of the WCS.
+
+```{r}
+ggplot() +
+  geom_sf(data = pa_pl2, aes(fill = group)) +
+  theme_void()
+```
+
+```{r eval=FALSE, include=FALSE}
+RCurl::ftpUpload("R/poc2_wcs_counties.html", "ftp://codyever:PieqI88!!@ftp.codyevers.a2hosted.com/public_html/notebooks/poc2_wcs_counties.html")
+write.csv(tmp2, 'data/poc2_wcs_counties.csv', row.names=F)
+```
+
+\`\`\`

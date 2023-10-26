@@ -15,9 +15,8 @@ website:
         text: Team 
     right:
       - text: More
-        menu: 
-        - notebooks.qmd
-        - map.qmd
+        menu:
+          - href: nb/comparison_map.qmd
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
     left: "&copy; Copyright 2023"
