@@ -1,0 +1,25 @@
+---
+title: "Fueling Adaptation"
+---
+
+Fueling Adaptation looks at how federal investments leverage local capacity towards a wildfire-adapted landscape where low/mixed severity fire maintains healthy ecosystems and communities coexist with fire though smart planning, defensible space, and safe building materials. To be effective, it is critical that these federal investments effectively combine with and make the most of the capacities and networks that already exist, to effectively fuel adaptation to changing wildfire dynamics.
+
+![**An Emerging Crisis.** Wildfires across the United States have resulted in rising ecological and social costs. More and more homes and communities are threatened by wildfire because of a legacy of fire exclusion on the landscape, changing climate and fuel conditions, and an expanding wildland-urban interface.](img/iso.png){.column-margin}
+
+With funding from the Bipartisan Infrastructure Law, we are conducting research in 2023-2025 to examine ongoing wildfire adaptation on key landscapes identified as priorities under the WCS. Our work seeks to answer the following overarching question:
+
+-   How can WCS investments enhance local capacity and what conditions make these investments effective at catalyzing collaborative efforts to reduce wildfire risk?
+
+More specifically we ask:
+
+-   Who is involved in wildfire governance and where are there existing capacities and gap?
+
+-   How is information about wildfire adaptation and mitigation practices shared?
+
+-   What community efforts to address wildfire risk have been implemented and where do gaps remain?
+
+To answer these questions, this project integrates diverse forms of social and ecological data that encompass information about landscape conditions, actors involved in environmental governance, existing communications networks, and ongoing management actions aimed at mitigating wildfire impacts.
+
+![**Adapting to Fire.** Innovative toos like prescribed fire had reduce risk to communities and restore fire-adapted forests.](img/rxfire.jpeg){.column-margin}
+
+Through this integration, we expect to gain unprecedented insight into where and why successful wildfire adaptation is occurring, and how to catalyze and fuel adaptation. This understanding of wildfire risk reduction will increase the effectiveness of the Forest Service's future investments, informing best practices for partnership-building, effective communication, and collaborative stewardship at the landscape scale.
