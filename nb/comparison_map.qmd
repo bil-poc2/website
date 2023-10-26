@@ -1,7 +1,6 @@
 ---
 title: "Capacity vs Need Mockup"
 date: Oct 23, 2023
-author: Cody Evers
 format: 
   html:
     embed-resources: true
@@ -106,5 +105,3 @@ ggplot() +
 RCurl::ftpUpload("R/poc2_wcs_counties.html", "ftp://codyever:PieqI88!!@ftp.codyevers.a2hosted.com/public_html/notebooks/poc2_wcs_counties.html")
 write.csv(tmp2, 'data/poc2_wcs_counties.csv', row.names=F)
 ```
-
-\`\`\`
