@@ -100,8 +100,3 @@ ggplot() +
   geom_sf(data = pa_pl2, aes(fill = group)) +
   theme_void()
 ```
-
-```{r eval=FALSE, include=FALSE}
-RCurl::ftpUpload("R/poc2_wcs_counties.html", "ftp://codyever:PieqI88!!@ftp.codyevers.a2hosted.com/public_html/notebooks/poc2_wcs_counties.html")
-write.csv(tmp2, 'data/poc2_wcs_counties.csv', row.names=F)
-```
