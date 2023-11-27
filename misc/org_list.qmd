@@ -1,0 +1,66 @@
+---
+title: "FilterLabs.AI Org List"
+date: 2023-11-27
+format: 
+  html:
+    embed-resources: true
+editor_options: 
+  chunk_output_type: console
+project:
+  execute-dir: project
+---
+
+```{r setup, include=FALSE, warning=F}
+## Global options
+knitr::opts_chunk$set(cache = FALSE)
+pacman::p_load(tidyverse, sf, rmarkdown, usmap, here)
+
+map_dat <- st_as_sf(maps::map("state", fill=TRUE, plot =FALSE)) |> filter(ID %in% c('arizona','utah','washington','idaho','montana','california','nevada','colorado','new mexico','oregon','wyoming')) 
+
+dat <- here('data/filterlabs_poc2_orglist_nov14.csv') |>
+  read.csv() |>
+  mutate(name = tolower(Name)) |>
+  mutate(bbox = paste0('(',NE_LAT,',',NE_LNG,',',SW_LAT,',',SW_LNG,')'))
+
+search <- function(txt){
+  dat2 <- dat |> filter(grepl(txt, name)) 
+  cat(paste('Count =', nrow(dat2)))
+  
+  suppressWarnings({
+      p1 <- 
+        ggplot() + 
+        geom_sf(
+          data = map_dat
+        ) +
+        geom_rect(
+          data = dat2,
+          aes(xmin = SW_LNG, xmax = NE_LNG, ymin = NE_LAT, ymax = SW_LAT), 
+          fill=NA, color='black'
+        ) +
+        coord_sf(xlim = c(-125, -102), ylim = c(32, 49))
+        print(p1)
+  })
+
+  # print(dat2 |> pull(Name) |> paste(collapse = ' || '))
+  paged_table(dat2 |> select(Name, Audience.Location))
+  # cat('\n\n---------------------\n\n')
+
+}
+```
+
+```{r}
+#| warning: false
+#| column: screen-inset-shaded
+DT::datatable(dat |> select(org = Name, loc = Audience.Location, type = Organization.Type, subtype = Sub.Category, scale = Scale, strategy_landscape, strategy_community, strategy_response, misc_fire, misc_utility))
+
+```
+
+```{r}
+search('firewise|fire council|fire adpated')
+search('national forest|ranger district')
+search('conservation district')
+search('hoa|home owners association|property owners association')
+search('fire department|fire district|fire station|station|dispatch|rescue|ems')
+search('county')
+```
+

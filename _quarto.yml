@@ -20,6 +20,8 @@ website:
             text: Capacity vs need mockup
           - href: misc/counties_map.qmd
             text: WCS counties reference
+          - href: misc/org_list.qmd
+            text: FilterLabs Org List
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
     left: "&copy; Copyright 2023"
