@@ -4,6 +4,8 @@ date: 2023-11-27
 format: 
   html:
     embed-resources: true
+    grid: 
+      body-width: 700px
 editor_options: 
   chunk_output_type: console
 project:
@@ -48,13 +50,54 @@ search <- function(txt){
 }
 ```
 
+Below is a brief summary of the updated organizational list provided by FilterLabs.AI on November 14th, 2023. 
+
+### Organization Type
+```{r}
+dat |> pull(Organization.Type) |> table()
+```
+
+### Sub-Category
+```{r}
+dat |> pull(Sub.Category) |> table()
+```
+
+### Organization Scale
+```{r}
+# scale count
+dat |> filter(grepl('scale_', Scale)) |> pull(Scale) |> table()
+
+# misclassifieds scales items
+dat |> filter(grepl('scale_', Scale) == FALSE) |> pull(Scale) |> length()
+```
+
+### Organization Tags
+```{r}
+# Organization related to landscape domain cohesive strategy
+dat |> pull(strategy_landscape) |> table()
+
+# Organization related to community domain of cohesive strategy
+dat |> pull(strategy_community) |> table()
+
+# Organization related to response domain of cohesive strategy
+dat |> pull(strategy_response) |> table()
+
+# Organization clearly related to fire
+dat |> pull(misc_fire) |> table()
+
+# Organization clearly related to utilities
+dat |> pull(misc_utility) |> table()
+```
+
+### Search Table
 ```{r}
 #| warning: false
-#| column: screen-inset-shaded
+#| column: screen-inset
 DT::datatable(dat |> select(org = Name, loc = Audience.Location, type = Organization.Type, subtype = Sub.Category, scale = Scale, strategy_landscape, strategy_community, strategy_response, misc_fire, misc_utility))
 
 ```
 
+### Word Search
 ```{r}
 search('firewise|fire council|fire adpated')
 search('national forest|ranger district')
